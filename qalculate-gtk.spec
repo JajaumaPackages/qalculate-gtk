@@ -47,10 +47,6 @@ This package provides a (GTK+) graphical interface for Qalculate!
 %install
 %make_install
 
-pushd doc
-cp -pr html %{buildroot}/%{_datadir}/doc/%{name}
-popd
-
 desktop-file-install --delete-original			\
 	--remove-category Application			\
 	--dir %{buildroot}%{_datadir}/applications	\
@@ -64,7 +60,7 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 %files -f %{name}.lang
 %license COPYING
 %doc AUTHORS ChangeLog TODO
-%{_pkgdocdir}/html/*
+%{_defaultdocdir}/qalculate-gtk
 %{_bindir}/qalculate-gtk
 %{_datadir}/applications/qalculate-gtk.desktop
 %{_datadir}/pixmaps/qalculate.png
